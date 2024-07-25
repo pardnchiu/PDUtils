@@ -49,7 +49,7 @@ This source code project is licensed under the [GPL-3.0](https://github.com/pard
 
 - 導入 `PDFConverter`
 ```Javascript
-import { MDEditor, MDViewer } from "https://cdn.jsdelivr.net/gh/pardnchiu/pdf-converter@latest/js/PDFConverter.min.js";
+import { PDFConverter } from "https://cdn.jsdelivr.net/gh/pardnchiu/pdf-converter@latest/js/PDFConverter.min.js";
 
 const converter = new PDFConverter({
     file: [file],   // 透過 input 取得 file.result;

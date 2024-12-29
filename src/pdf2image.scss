@@ -1,0 +1,60 @@
+div.pdf2image-loading {
+    position: absolute;
+    top: calc(50% - 12px);
+    left: calc(50% - 120px);
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.25rem;
+    width: 240px;
+    height: 16px;
+    background-color: #fff;
+    border-radius: 16px;
+
+    &::before {
+        z-index: 0;
+        content: "";
+        position: absolute;
+        top: -2px;
+        left: -2px;
+        bottom: -2px;
+        width: calc(100% + 4px);
+        border-radius: 10px;
+        background-color: #ffffff80;
+        backdrop-filter: blur(1rem);
+        -webkit-backdrop-filter: blur(1rem);
+    }
+
+    &::after {
+        z-index: 1;
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: 0;
+        background: linear-gradient(to right, rgba(0, 0, 255, 0.3), rgba(0, 0, 255, 0.5));
+        opacity: 0;
+        transition: 0.3s;
+        border-radius: 8px;
+        transition: 0.3s;
+    }
+
+    p {
+        z-index: 2;
+        font-size: 0.75rem;
+        letter-spacing: 0.5px;
+    }
+}
+
+@for $i from 0 through 100 {
+
+    div.pdf2image-loading[data-percent="#{$i}"] {
+
+        &::after {
+            width: calc($i * 1%);
+            opacity: 1;
+        }
+    }
+}

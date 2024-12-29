@@ -1,30 +1,17 @@
-# 忽略 macOS 系統自動生成的 .DS_Store 檔案
-.DS_Store
-
 # 忽略 VSCode 的工作台設定檔案
 *.code-workspace
 
-# 忽略 macOS 資料夾圖標檔案
+# 忽略 macOS 系統自動生成的 .DS_Store 檔案與資料夾圖標
+.DS_Store
 Icon?
 
 # 忽略 npm 套件資料夾和相關檔案
-node_modules/*
-package-lock.json
-package.json
+node_modules
 terser.cache.json
-terser.config.json
-tsconfig.json
 
-# 忽略 shell 腳本檔案 reset.sh
+# 忽略其他
 reset.sh
-
-# 忽略所有 .js 檔案，但保留 .min.js 檔案
-*.js
-!*.min.js
-
-# 忽略以下資料夾
-sass
-typescript
-
-# 忽略 memo.md 檔案
 memo.md
+
+# 保留編譯結果資料夾
+!dist/

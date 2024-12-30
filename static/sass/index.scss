@@ -58,32 +58,18 @@ body {
             h1 {
                 width: 100%;
                 font-weight: 500;
-                font-size: 3rem;
+                font-size: 2rem;
                 color: #fff;
                 text-align: center;
                 letter-spacing: 0.25rem;
 
                 @media screen and (min-width: 480px) {
                     text-align: left;
-                    font-size: 4rem;
+                    font-size: 3rem;
                 }
             }
 
             h2 {
-                width: 100%;
-                text-align: center;
-                font-size: 1.5rem;
-                letter-spacing: 2px;
-                color: #fff;
-
-                @media screen and (min-width: 480px) {
-                    text-align: left;
-                    font-size: 2rem;
-                }
-            }
-
-            p {
-                margin-top: 0.5rem;
                 width: 100%;
                 text-align: center;
                 font-size: 1rem;
@@ -93,6 +79,31 @@ body {
                 @media screen and (min-width: 480px) {
                     text-align: left;
                     font-size: 1.5rem;
+                }
+            }
+
+            a {
+                display: flex;
+                align-items: center;
+                gap: 0.75rem;
+                margin-top: 0.5rem;
+                width: 100%;
+                text-align: center;
+                text-decoration: none;
+                font-size: 1rem;
+                letter-spacing: 2px;
+                color: #fff;
+
+                @media screen and (min-width: 480px) {
+                    text-align: left;
+                }
+
+                span.material-symbols-outlined {
+                    width: 1.5rem;
+                    height: 1.5rem;
+                    line-height: 1.5rem;
+                    font-size: 1.5rem;
+                    color: #fff;
                 }
             }
         }

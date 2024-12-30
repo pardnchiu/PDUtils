@@ -81,6 +81,20 @@ body {
                     font-size: 2rem;
                 }
             }
+
+            p {
+                margin-top: 0.5rem;
+                width: 100%;
+                text-align: center;
+                font-size: 1rem;
+                letter-spacing: 2px;
+                color: #fff;
+
+                @media screen and (min-width: 480px) {
+                    text-align: left;
+                    font-size: 1.5rem;
+                }
+            }
         }
 
         >section.button {
@@ -95,7 +109,8 @@ body {
                 align-items: center;
                 gap: 1rem;
                 color: #fff;
-                font-size: 1.25rem;
+                font-size: 1.125rem;
+                letter-spacing: 1px;
                 cursor: pointer;
                 transition: 0.5s;
 
@@ -108,10 +123,10 @@ body {
             }
 
             span.material-symbols-outlined {
-                width: 3rem;
-                height: 3rem;
-                line-height: 3rem;
-                font-size: 3rem;
+                width: 2.5rem;
+                height: 2.5rem;
+                line-height: 2.5rem;
+                font-size: 2.5rem;
                 color: #fff;
             }
 

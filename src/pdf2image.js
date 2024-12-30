@@ -3,15 +3,13 @@ const cdn_cloudflare = "https://cdnjs.cloudflare.com";
 const pdf_min_js = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js";
 const pdf_worker_min_js = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.worker.min.js";
 const jszip_min_js = "https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js";
+const css = "https://cdn.jsdelivr.net/npm/@pardnchiu/pdf2image@latest/dist/pdf2image.css";
 
-const $window = window;
 const $document = document;
 const $Promise = Promise;
-const $Uint8Array = Uint8Array;
 const $setTimeout = setTimeout;
-const $URL = URL;
 const $console = console;
-const $Error = Error;
+const $navigator = navigator;
 
 const _createElement = "createElement";
 const _setAttribute = "setAttribute";
@@ -39,6 +37,12 @@ const _type = "type";
 const _replace = "replace";
 const _push = "push";
 const _slice = "slice";
+const _innerText = "innerText";
+const _prepare = "prepare";
+const _process = "process";
+
+const lang = $navigator.language || $navigator.userLanguage;
+const isZh = /^zh/i.test(lang);
 
 (_ => {
     for (let e of [cdn_cloudflare]) {
@@ -67,7 +71,9 @@ const _slice = "slice";
 
     let link = $document[_createElement](_link);
     link[_setAttribute]("rel", 'stylesheet');
-    link[_href] = "./dist/pdf2image.css";
+    link[_href] = css;
+    // ! 測試用
+    // link[_href] = "./dist/pdf2image.css";
 
     $document[_head][_appendChild](link);
 })();
@@ -80,7 +86,7 @@ class pdf2imageLoading {
         dom[_dataset][_percent] = 0;
 
         const p = $document[_createElement]('p');
-        p.innerText = this.#loadingText();
+        p[_innerText] = this.#loadingText();
 
         dom[_appendChild](p);
 
@@ -92,7 +98,7 @@ class pdf2imageLoading {
     percent(index, total, prepare) {
         const num = Math.round((index / total) * 100);
         this[_body][_dataset][_percent] = num;
-        this[_body].children[0].innerText = this.#loadingText(num, prepare);
+        this[_body].children[0][_innerText] = this.#loadingText(num, prepare);
     };
 
     remove() {
@@ -100,7 +106,17 @@ class pdf2imageLoading {
     };
 
     #loadingText(percent = 0, prepare) {
-        return (prepare ? "準備壓縮檔 " : "解析中 ") + percent + "%";
+        const obj = {
+            zh: {
+                [_prepare]: "準備壓縮檔 ",
+                [_process]: "解析中 ",
+            },
+            en: {
+                [_prepare]: "Preparing zip ",
+                [_process]: "Processing ",
+            }
+        };
+        return obj[isZh ? "zh" : "en"][prepare ? _prepare : _process] + percent + "%";
     };
 };
 
@@ -131,7 +147,7 @@ class pdf2image {
         return new $Promise((res, rej) => {
             pdfjsLib.GlobalWorkerOptions.workerSrc = pdf_worker_min_js;
             pdfjsLib.getDocument({
-                data: new $Uint8Array(this.#file),
+                data: new Uint8Array(this.#file),
                 cMapUrl: "//cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/cmaps/",
                 cMapPacked: true,
                 useWorkerFetch: true,
@@ -180,7 +196,7 @@ class pdf2image {
                 }
                 catch (err) {
                     loading[_remove]();
-                    throw new $Error(`${_error} Page ${i} ${err[_message]}`);
+                    throw new Error(`${_error} Page ${i} ${err[_message]}`);
                 };
             })[_catch](err => {
                 $console[_error](_error, err);
@@ -238,7 +254,7 @@ class pdf2image {
                 loading[_percent](e[_percent], 100, true);
             })[_then](e => {
                 const dom = $document[_createElement]('a');
-                dom[_href] = $URL.createObjectURL(e);
+                dom[_href] = URL.createObjectURL(e);
                 dom.download = `${filename}.zip`;
                 $document[_body][_appendChild](dom);
 
@@ -256,4 +272,4 @@ class pdf2image {
     };
 };
 
-$window.pdf2image = pdf2image;
+window.pdf2image = pdf2image;

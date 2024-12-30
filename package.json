@@ -1,7 +1,7 @@
 {
     "name": "@pardnchiu/pdf2image",
-    "version": "1.0.0",
-    "description": "pdf2image is a lightweight JavaScript library to convert PDF pages into high-quality images (PNG, JPG, WebP) with real-time progress tracking, optional ZIP compression, and support for concurrent processing.",
+    "version": "1.0.1",
+    "description": "pdf2image is a lightweight JavaScript library to convert PDF pages into images (PNG, JPG, WebP) with real-time progress tracking and optional ZIP compression.",
     "main": "dist/pdf2image.js",
     "module": "dist/pdf2image.esm.js",
     "scripts": {
@@ -23,19 +23,22 @@
         "url": "https://github.com/pardnchiu/pdf2image.git"
     },
     "keywords": [
+        "integration",
         "javascript-library",
-        "PDF-to-PNG",
-        "PDF-to-JPG",
-        "PDF-to-WebP",
-        "PDF-to-image",
-        "lightweight"
+        "pdf-to-png",
+        "pdf-to-jpg",
+        "pdf-to-webp",
+        "pdf-to-image",
+        "邱敬幃",
+        "chiuchingwei",
+        "pardnchiu"
     ],
     "author": {
         "name": "邱敬幃 Pardn Chiu",
         "email": "dev@pardn.io",
         "url": "https://github.com/pardnchiu"
     },
-    "license": "Proprietary",
+    "license": "MIT",
     "bugs": {
         "url": "https://github.com/pardnchiu/pdf2image/issues",
         "email": "dev@pardn.io"

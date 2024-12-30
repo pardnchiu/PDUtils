@@ -6,12 +6,23 @@
 [![download](https://img.shields.io/npm/dm/@pardnchiu/pdf2image)](https://www.npmjs.com/package/@pardnchiu/pdf2image)
 [![jsdeliver](https://img.shields.io/jsdelivr/npm/hm/@pardnchiu/pdf2image)](https://www.jsdelivr.com/package/npm/@pardnchiu/pdf2image)
 
-## 特點 / Feature
+## 核心特色
 
-- 讀取 PDF 文件內容並將其轉換為圖片。
-- 將轉換後的圖片打包成 ZIP 檔案並下載。
-- 使用 [PDF.js](https://github.com/mozilla/pdf.js) 讀取 PDF 內容。
-- 使用 [JSZip.js](https://github.com/Stuk/jszip) 生成壓縮檔。
+### PDF 轉換為圖片
+- 完美整合 [pdf.js](https://github.com/mozilla/pdf.js)，實現快速解析與轉換 PDF 為圖片。
+- 支援多種圖片格式：jpg、png、webp。
+
+### 壓縮下載
+- 結合 [jszip.js](https://github.com/Stuk/jszip)，將所有生成的圖片打包成 ZIP 檔案，一鍵下載，操作便捷。
+- 自動命名檔案與壓縮檔，方便管理。
+
+### 異步處理與錯誤處理
+- 使用異步設計保證流暢的用戶體驗。
+- 提供詳細的錯誤資訊，便於排查問題。
+
+### 異步處理與錯誤處理
+- 使用異步設計保證流暢的用戶體驗。
+- 提供詳細的錯誤資訊，便於排查問題。
 
 ## 安裝方式
 

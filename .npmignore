@@ -5,9 +5,19 @@
 .DS_Store
 Icon?
 
+# 忽略 git 相關
+.git
+.gitattributes
+.gitignore
+
+# 忽略介紹用 html
+static/
+index.html
+
 # 忽略其他
 node_modules
 terser.cache.json
+terser.config.json
 reset.sh
 memo.md
 

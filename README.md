@@ -4,71 +4,69 @@
 ![size](https://img.shields.io/github/size/pardnchiu/pdf2image/dist%2Fpdf2image.js)<br>
 [![npm](https://img.shields.io/npm/v/@pardnchiu/pdf2image)](https://www.npmjs.com/package/@pardnchiu/pdf2image)
 [![download](https://img.shields.io/npm/dm/@pardnchiu/pdf2image)](https://www.npmjs.com/package/@pardnchiu/pdf2image)
-[![jsdeliver](https://img.shields.io/jsdelivr/npm/hm/@pardnchiu/pdf2image)](https://www.jsdelivr.com/package/npm/@pardnchiu/pdf2image)
+[![jsdeliver](https://img.shields.io/jsdelivr/npm/hm/@pardnchiu/pdf2image)](https://www.jsdelivr.com/package/npm/@pardnchiu/pdf2image)<br>
+[![](https://img.shields.io/badge/查閱-中文版本-ffffff)](https://github.com/pardnchiu/pdf2image/blob/main/README.zh.md)
 
-## 核心特色
+## Features
 
-### PDF 轉換為圖片
-- 完美整合 [pdf.js](https://github.com/mozilla/pdf.js)，實現快速解析與轉換 PDF 為圖片。
-- 支援多種圖片格式：jpg、png、webp。
+### PDF to Images
+- Seamlessly integrates with [pdf.js](https://github.com/mozilla/pdf.js) to efficiently parse PDFs and convert them into images.
+- Supports multiple image formats: `jpg`, `png`, `webp` for versatile usage.
 
-### 壓縮下載
-- 結合 [jszip.js](https://github.com/Stuk/jszip)，將所有生成的圖片打包成 ZIP 檔案，一鍵下載，操作便捷。
-- 自動命名檔案與壓縮檔，方便管理。
+### Compressed Downloads
+- Leverages [jszip.js](https://github.com/Stuk/jszip) to bundle generated images into a ZIP file for one-click download.
+- Automatically names files and ZIP archives for better organization of multipage content.
 
-### 異步處理與錯誤處理
-- 使用異步設計保證流暢的用戶體驗。
-- 提供詳細的錯誤資訊，便於排查問題。
+### High Efficiency and Stability
+- Designed with asynchronous processing to ensure a smooth user experience.
+- Comprehensive error handling with detailed error messages for easier debugging.
 
-### 異步處理與錯誤處理
-- 使用異步設計保證流暢的用戶體驗。
-- 提供詳細的錯誤資訊，便於排查問題。
+## Installation
 
-## 安裝方式
-
-### 從 npm 安裝
+### Install via npm
 ```bash
-npm i @pardnchiu/nanomd
+npm i @pardnchiu/pdf2image
 ```
 
-### 從 CDN 引入
+### Include via CDN
 
-#### 引入 `pdf2image` 套件
+#### UMD Version
 ```html
 <script src="https://cdn.jsdelivr.net/npm/@pardnchiu/pdf2image@[VERSION]/dist/pdf2image.js"></script>
 ```
 
-#### Module 版本
+#### ES Module Version
 ```javascript
 import { pdf2image } from "https://cdn.jsdelivr.net/npm/@pardnchiu/pdf2image@[VERSION]/dist/pdf2image.esm.js";
 ```
 
-## 使用方法
+## How to use
 
-### 初始化 `pdf2image`
+### Initialize `pdf2image`
 ```Javascript
-
 const converter = new pdf2image({
-    // filename: "" // String
-    file: [file],   // 透過 input 取得 file.result;
-    scale: 1.5,     // 大小縮放，預設 1.5
-    type: "png"     // 輸出類型 [jpg|png|webp]
+    filename: "image-yyyy-MM-DD_hh:mm", // Specify output filename, supports date format templates [yyyy|MM|DD|hh|mm]
+    file: [file],                       // Input PDF file from file input or other sources
+    scale: 1.5,                         // Scale factor, default is 1.5
+    type: "png"                         // Output image format [jpg|png|webp]
 });
 
-// 讀取 PDF 並轉換至圖片
+// Convert PDF to images
 converter.convert().then(images => {
-    // do something
+    console.log("Successfully converted images:", images);
 });
 
-// 下載 PDF
-converter.download();
+// Download compressed ZIP file
+converter.download().then(() => {
+    console.log("Images have been packed and downloaded!");
+});
 ```
 
-## 授權條款
+## License
 
-此源代碼項目採用 [MIT](https://github.com/pardnchiu/pdf2image/blob/main/LICENSE) 許可證授權。
+This source code project is licensed under the [MIT](https://github.com/pardnchiu/pdf2image/blob/main/LICENSE) License.
 
-## 開發者
+## Creator
 
 <img src="https://avatars.githubusercontent.com/u/25631760" align="left" width="96" height="96" style="margin-right: 0.5rem;">
 
@@ -82,4 +80,4 @@ converter.download();
 
 ***
 
-©️ 2024 [Pardn Chiu 邱敬幃](https://www.linkedin.com/in/pardnchiu)
+©️ 2024 [邱敬幃 Pardn Chiu](https://pardn.io)

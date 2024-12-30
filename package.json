@@ -1,6 +1,6 @@
 {
     "name": "@pardnchiu/pdf2image",
-    "version": "1.0.1",
+    "version": "1.1.0",
     "description": "pdf2image is a lightweight JavaScript library to convert PDF pages into images (PNG, JPG, WebP) with real-time progress tracking and optional ZIP compression.",
     "main": "dist/pdf2image.js",
     "module": "dist/pdf2image.esm.js",

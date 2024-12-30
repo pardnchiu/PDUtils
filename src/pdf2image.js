@@ -186,7 +186,21 @@ class pdf2image {
                 $console[_error](_error, err);
                 rej(`${_error} ${err[_message]}`);
             });
-        })
+        });
+    };
+
+    // 日期格式處理
+    #formatDate(template) {
+        const date = new Date();
+        return template[_replace](/yyyy|MM|DD|hh|mm/g, e => {
+            return {
+                yyyy: date.getFullYear(),
+                MM: ("0" + (date.getMonth() + 1))[_slice](-2),
+                DD: ("0" + date.getDate())[_slice](-2),
+                hh: ("0" + date.getHours())[_slice](-2),
+                mm: ("0" + date.getMinutes())[_slice](-2)
+            }[e];
+        });
     }
 
     async download() {
@@ -204,8 +218,7 @@ class pdf2image {
 
         return new $Promise((res, rej) => {
             const zip = new JSZip();
-            const filename = `${this.#filename[_length] < 1 ? "image" : this.#filename[_replace](/\s/g, "_")}`;
-            const zipname = `${this.#filename[_length] < 1 ? "pdf2image" : this.#filename[_replace](/\s/g, "_")}`;
+            const filename = this.#formatDate(this.#filename);
 
             // * 將圖片添加到 ZIP 檔案中
             for (let i = 0; i < this.#result[_length]; i++) {
@@ -222,17 +235,11 @@ class pdf2image {
                 [_type]: 'blob',
                 streamFiles: true
             }, e => {
-                loading[_percent](e.percent, 100, true);
+                loading[_percent](e[_percent], 100, true);
             })[_then](e => {
-                const date = new Date();
-                const y = date.getFullYear();
-                const M = ("0" + (date.getMonth() + 1))[_slice](-2);
-                const d = ("0" + date.getDate())[_slice](-2);
-                const h = ("0" + date.getHours())[_slice](-2);
-                const m = ("0" + date.getMinutes())[_slice](-2);
                 const dom = $document[_createElement]('a');
                 dom[_href] = $URL.createObjectURL(e);
-                dom.download = `${zipname}_${y}_${M}_${d}_${h}_${m}.zip`;
+                dom.download = `${filename}.zip`;
                 $document[_body][_appendChild](dom);
 
                 $setTimeout(_ => {

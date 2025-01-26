@@ -180,7 +180,7 @@
 
     <body id="app" class="home" :animation="fade-in">
         <header>
-            <a href="/">
+            <a href="https://pardn.io/pdf2image/">
                 <i class="fa-solid fa-circle-chevron-left"></i>
             </a>
             <a href="https://github.com/pardnchiu/pdf2image" target="_blank">
@@ -206,7 +206,7 @@
                         rendered: async _ => {
                             let pre = "";
 
-                            await fetch("/LICENSE")
+                            await fetch("../LICENSE")
                                 .then(response => response.text())
                                 .then(data => {
                                     pre = data;
